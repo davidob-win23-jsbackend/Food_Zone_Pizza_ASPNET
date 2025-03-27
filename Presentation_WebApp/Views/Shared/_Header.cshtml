@@ -1,0 +1,78 @@
+﻿@inject SignInManager<UserEntity> _signInManager
+
+@* @{
+    var user = await UserManager.GetUserAsync(User);
+} *@
+
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+} 
+
+<header>
+    <div class="container">
+       @*  <a id="logo" asp-action="Home" asp-controller="Index">
+            @* <img src="~/images/logos/silicon-logo-@(isDark ? "dark" : "light")_theme.svg" alt="logo"> 
+        </a> *@
+
+        <nav>
+            <a class="home nav-link" asp-controller="Menu" asp-action="Menu">
+                <i class="fa-solid fa-pot-food"></i>
+                <span>Menu</span>
+            </a>
+
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <a class="nav-link" asp-controller="Notification" asp-action="Index">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            }
+
+@*             @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                <a asp-controller="Admin" asp-action="Index">Admin Portal</a>
+            } *@
+
+            <a class="nav-link" asp-controller="Contact" asp-action="Index">
+                <i class="fa-regular fa-user"></i>
+                <span>Contact Us</span>
+            </a>
+
+            <a class="cart-icon nav-link" asp-controller="ShoppingCart" asp-action="Index">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+            </a>
+           
+            
+
+        </nav>
+            
+
+        <div id="theme-switch" class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" checked="@isDark" />
+                <input type="checkbox" id="switch-mode"/>
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+
+        <div class="account-buttons">
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <a class="btn-signin" asp-action="Details" asp-controller="Account"><i class="fa-solid fa-user"></i>My Account</a>
+                <a class="btn-signup" asp-action="SignOut" asp-controller="Auth"><i class="fa-solid fa-right-to-bracket"></i>Sign out</a>
+            }
+            else
+            {
+                <a class="btn-signin" asp-action="SignIn" asp-controller="Auth"><i class="fa-solid fa-right-to-bracket"></i>Sign in</a>
+                <a class="btn-signup" asp-action="SignUp" asp-controller="Auth"><i class="fa-solid fa-user"></i>Sign up</a>
+            }
+
+            
+        </div>
+
+    </div>
+</header>

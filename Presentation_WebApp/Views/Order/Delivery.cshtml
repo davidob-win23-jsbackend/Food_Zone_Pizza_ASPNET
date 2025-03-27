@@ -1,0 +1,31 @@
+﻿@model DeliveryViewModel
+
+@{
+    ViewData["Title"] = "Delivery";
+}
+
+<div class="delivery-container">
+    <h2>Choose delivery method</h2>
+
+    <form asp-action="Delivery" method="post" novalidate>
+        <label for="FirstName">FirstName*</label>
+        <input type="text" id="FirstName" name="FirstName" required />
+
+        <label for="LastName">LastName*</label>
+        <input type="text" id="LastName" name="LastName" required />
+
+        <label for="Address">Search after delivery address*</label>
+        <input type="text" id="Address" name="Address" required />
+
+        <label for="Instructions">Delivery Instructions</label>
+        <textarea id="Instructions" name="Instructions"></textarea>
+
+        <label for="Porttelefon">Door pin</label>
+        <input type="text" id="Porttelefon" name="Porttelefon" />
+
+        <label for="Floor">Floor</label>
+        <input type="text" id="Floor" name="Floor" />
+
+        <button asp-controller="ShoppingCart" asp-action="PaymentMethod" type="submit" class="submit-btn">Continue</button>
+    </form>
+</div>

@@ -1,0 +1,85 @@
+﻿@model AccountDetailsViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Basic!.FirstName} {Model.Basic.LastName}";
+}
+
+<div class="account-container">
+    <h2>Account Details</h2>
+    @if (!string.IsNullOrEmpty(TempData["StatusMessage"]?.ToString()))
+    {
+        <div class="alert alert-success">
+            @TempData["StatusMessage"]
+        </div>
+    }
+    <!-- Basic Information Form -->
+    <form asp-action="UpdateBasicInfo" method="post" novalidate>
+        <div class="account-section">
+            <div class="personal-info">
+                <div>
+                    <label asp-for="Basic.FirstName"></label>
+                    <input asp-for="Basic.FirstName" class="form-control" />
+                    <span asp-validation-for="Basic.FirstName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Basic.LastName"></label>
+                    <input asp-for="Basic.LastName" class="form-control" />
+                    <span asp-validation-for="Basic.LastName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Basic.Email"></label>
+                    <input asp-for="Basic.Email" class="form-control" disabled />
+                    <span asp-validation-for="Basic.Email" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Basic.PhoneNumber"></label>
+                    <input asp-for="Basic.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Basic.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-theme-red-general">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="divider"></div>
+
+    <!-- Form for updating address info -->
+    <form asp-action="UpdateAddressInfo" method="post" novalidate>
+        <div class="account-section">
+            <div class="address-info">
+                <div>
+                    <label asp-for="Address.StreetName"></label>
+                    <input asp-for="Address.StreetName" class="form-control" />
+                    <span asp-validation-for="Address.StreetName" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Address.PostalCode"></label>
+                    <input asp-for="Address.PostalCode" class="form-control" />
+                    <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Address.City"></label>
+                    <input asp-for="Address.City" class="form-control" />
+                    <span asp-validation-for="Address.City" class="text-danger"></span>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn-theme-red-general">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+

@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Order Online";
+}
+
+<div class="delivery-options">
+    <h2>Choose ordering type</h2>
+    <a asp-action="Delivery" asp-controller="Order" class="delivery-button">
+        <i class="fas fa-truck"></i> Delivery
+    </a>
+
+    <a asp-action="Pickup" asp-controller="Order" class="delivery-button">
+        <i class="fas fa-box"></i> Pickup
+    </a>
+</div>

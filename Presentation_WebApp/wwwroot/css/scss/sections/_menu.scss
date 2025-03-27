@@ -1,0 +1,132 @@
+// Variables
+$primary-color: #e63946;
+$background-color: #f8f9fa;
+$text-color: #333;
+$card-bg: #fff;
+$button-bg: #ff5733;
+$button-hover: darken($button-bg, 10%);
+
+// General Styling
+.menu-container {
+    text-align: center;
+    padding: 50px 20px;
+    /*background-color: $background-color;*/
+    background-color: var(--color-gray-000);
+
+    h1 {
+        font-size: 2.5rem;
+        color: $primary-color;
+        margin-bottom: 20px;
+    }
+}
+
+// Menu Grid
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Responsive grid
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.menu-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Centers content
+    justify-content: space-between;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    img {
+        width: 100%; // Makes all images take up full width
+        max-height: 250px; // Limits height for uniformity
+        object-fit: cover; // Crops images to fit while maintaining aspect ratio
+        border-radius: 10px; // Rounded corners for aesthetics
+        display: block; // Removes any extra space
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin: 10px 0;
+        color: #df0e08;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .price {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #e63946;
+        margin: 10px 0;
+    }
+
+    .add-to-cart {
+        background: #ff5733;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: darken(#ff5733, 10%);
+        }
+    }
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+
+    button {
+        background: #ff5733;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &:hover {
+            background: darken(#ff5733, 10%);
+        }
+    }
+
+    .quantity-input {
+        width: 40px;
+        text-align: center;
+        font-size: 1rem;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+}
+
+
+// Responsive fix for smaller screens
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    img {
+        height: 200px;
+    }
+}
+

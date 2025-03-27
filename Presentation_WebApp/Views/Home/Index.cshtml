@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="hero-section">
+    <img src="~/images/detroit-style-pizza.jpg" alt="Delicious Pizza" class="hero-image">
+    <div class="overlay">
+        <h1 class="title">Food Zone Pizza</h1>
+        <p class="subtitle">Fresh and good pizza delivered to you!</p>
+        <div class="info">
+            <p><strong>Address:</strong> Storgatan 1, 123 45 Stockholm</p>
+            <p><strong>Telephone:</strong> 08-123 45 67</p>
+            <p><strong>Opening hours:</strong> Monday - Sunday: 11:00 - 22:00</p>
+        </div>
+       @*  <a href="/Menu" class="order-button">Order Online</a> *@
+        <a class="order-button" asp-action="Menu" asp-controller="Menu" class="order-button">Order Online</a>
+    </div>
+</div>
+

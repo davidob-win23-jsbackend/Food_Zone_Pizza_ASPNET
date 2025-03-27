@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="cart-container">
+    <h1>Your Cart 🛒</h1>
+
+    <div class="cart-items"></div> <!-- Cart items will be dynamically inserted here -->
+
+    <div class="cart-summary">
+        <h2>Total: <span id="total-price">0</span> kr</h2>
+        <a class="checkout-btn" asp-controller="Order" asp-action="Index" class="btn"><span class="center">Proceed to Checkout</span></a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || {};
+        let cartContainer = document.querySelector(".cart-items");
+        let totalPriceElement = document.getElementById("total-price");
+
+        function updateCartDisplay() {
+            cartContainer.innerHTML = "";
+            let totalPrice = 0;
+
+            for (let id in cart) {
+                let pizza = JSON.parse(sessionStorage.getItem(`pizza-${id}`)); // Retrieve stored pizza details
+                if (!pizza) continue; // If pizza info doesn't exist, skip
+
+                let itemTotal = pizza.price * cart[id];
+                totalPrice += itemTotal;
+
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${pizza.image}" alt="${pizza.name}">
+                        <div class="cart-details">
+                            <h2>${pizza.name}</h2>
+                            <span>${pizza.price} kr</span>
+                            <div class="quantity-controls">
+                                <button class="decrease-qty" data-id="${id}">−</button>
+                                <input type="number" class="quantity-input" data-id="${id}" value="${cart[id]}" min="1">
+                                <button class="increase-qty" data-id="${id}">+</button>
+                            </div>
+                            <button class="remove-item" data-id="${id}">Remove</button>
+                        </div>
+                        <span class="item-total">${itemTotal} kr</span>
+                    </div>
+                `;
+            }
+
+            totalPriceElement.textContent = totalPrice;
+        }
+
+        function updateCart(id, qty) {
+            qty = parseInt(qty, 10);
+            if (qty <= 0) {
+                delete cart[id]; // Remove item if qty is 0
+            } else {
+                cart[id] = qty;
+            }
+
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        cartContainer.addEventListener("click", function (event) {
+            let target = event.target;
+            let id = target.dataset.id;
+
+            if (target.classList.contains("increase-qty")) {
+                let input = target.previousElementSibling;
+                input.value = parseInt(input.value) + 1;
+                updateCart(id, input.value);
+            }
+
+            if (target.classList.contains("decrease-qty")) {
+                let input = target.nextElementSibling;
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                    updateCart(id, input.value);
+                }
+            }
+
+            if (target.classList.contains("remove-item")) {
+                delete cart[id]; // Remove item from cart
+                sessionStorage.setItem("cart", JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        });
+
+        updateCartDisplay();
+    });
+</script>
+
+
+

@@ -1,0 +1,35 @@
+﻿@model PickupViewModel
+
+@{
+    ViewData["Title"] = "Pickup";
+}
+
+<div class="pickup-container">
+    <h2>Choose delivery method</h2>
+
+    <form asp-action="Pickup" method="post" novalidate>
+        <label for="PickupDate">Date</label>
+        <input type="date" id="PickupDate" name="PickupDate" required />
+
+        <label for="PickupTime">Time</label>
+        <select id="PickupTime" name="PickupTime">
+            <option value="Snarast">Soon</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+            <option value="18:00">18:00</option>
+            <option value="19:00">19:00</option>
+            <option value="20:00">20:00</option>
+            <option value="21:00">21:00</option>
+            <option value="22:00">22:00</option>
+        </select>
+
+        <button asp-controller="ShoppingCart" asp-action="PaymentMethod" type="submit" class="submit-btn">Continue</button>
+    </form>
+</div>

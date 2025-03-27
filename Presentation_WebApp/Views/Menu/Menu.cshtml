@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Menu";
+}
+
+<div class="menu-container">
+    <h1>Choose you pizza 🍕</h1>
+
+    <div class="menu-grid">
+        @foreach (var pizza in ViewBag.Pizzas)
+        {
+            <div class="menu-item">
+                <img src="@pizza.ImageUrl" alt="@pizza.Name">
+                <h2>@pizza.Name</h2>
+                <p>@pizza.Description</p>
+                <span class="price">@pizza.Price kr</span>
+
+                <!-- Quantity Selector -->
+                <div class="quantity-selector">
+                    <button class="decrease-qty" data-id="@pizza.Id">−</button>
+                    <input type="number" class="quantity-input" data-id="@pizza.Id" value="1" min="1">
+                    <button class="increase-qty" data-id="@pizza.Id">+</button>
+                </div>
+
+                <button class="add-to-cart" data-id="@pizza.Id">Add to cart</button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Include JavaScript for handling quantity changes -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(sessionStorage.getItem("cart")) || {}; 
+
+        function updateCartDisplay() {
+            let totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+            let cartIcon = document.querySelector(".cart-icon span");
+            if (cartIcon) cartIcon.textContent = totalItems; // Update cart count
+        }
+
+        function updateQuantityInputs() {
+            document.querySelectorAll(".quantity-input").forEach(input => {
+                let pizzaId = input.dataset.id;
+                if (cart[pizzaId]) {
+                    input.value = cart[pizzaId].toString(); // Ensure it's a valid string
+                } else {
+                    input.value = "1"; // Default to 1 as a string
+                }
+            });
+        }
+
+        document.querySelectorAll(".increase-qty").forEach(button => {
+            button.addEventListener("click", function () {
+                let input = this.previousElementSibling;
+                let newQty = parseInt(input.value) + 1;
+                input.value = newQty;
+               @*  updateCart(input.dataset.id, newQty); *@
+            });
+        });
+
+        document.querySelectorAll(".decrease-qty").forEach(button => {
+            button.addEventListener("click", function () {
+                let input = this.nextElementSibling;
+                let newQty = parseInt(input.value) - 1;
+                if (newQty >= 1) {
+                    input.value = newQty;
+                    @* updateCart(input.dataset.id, newQty); *@
+                }
+            });
+        });
+
+        document.querySelectorAll(".quantity-input").forEach(input => {
+            input.addEventListener("change", function () {
+                let qty = parseInt(this.value);
+                if (qty < 1) this.value = 1;
+                updateCart(this.dataset.id, this.value);
+            });
+        });
+
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", function () {
+                let pizzaId = this.dataset.id;
+                let input = document.querySelector(`.quantity-input[data-id="${pizzaId}"]`);
+                let quantity = parseInt(input.value);
+
+                let pizza = {
+                    id: pizzaId,
+                    name: this.closest(".menu-item").querySelector("h2").textContent,
+                    price: parseInt(this.closest(".menu-item").querySelector(".price").textContent),
+                    image: this.closest(".menu-item").querySelector("img").src
+                };
+
+                sessionStorage.setItem(`pizza-${pizzaId}`, JSON.stringify(pizza));
+
+                // Update the cart quantity
+                updateCart(pizzaId, quantity, true);
+            });
+        });
+
+       function updateCart(id, qty, addToCart = false) {
+            qty = parseInt(qty, 10); // Ensure qty is a number
+
+            if (addToCart) {
+                cart[id] = (cart[id] || 0) + qty; // Add to existing quantity
+            } else {
+                cart[id] = qty; // Set the new quantity
+            }
+
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+
+            // Convert all values in the cart to numbers
+            Object.keys(cart).forEach(id => {
+                cart[id] = parseInt(cart[id], 10);
+            });
+
+            updateCartDisplay();
+            updateQuantityInputs();
+        }
+
+        updateCartDisplay(); // Load cart count when page loads
+        updateQuantityInputs(); // Ensure correct quantity is displayed in inputs
+    });
+</script>
+
+
+
+

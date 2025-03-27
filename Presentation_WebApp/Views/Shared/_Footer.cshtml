@@ -1,0 +1,31 @@
+﻿@* <footer>
+    <div class="container">
+        <div class="@((ViewContext.RouteData.Values["Controller"]!.ToString() == "Auth") ? "d-none" : "social-media")">
+            <a class="btn btn-social" href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a class="btn btn-social" href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+            <a class="btn btn-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a class="btn btn-social" href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; @DateTime.Now.Year Food Zone Pizza. All rights reserved. </p>
+        </div>
+    </div>
+</footer> *@
+
+<footer>
+    <div class="container">
+        @if (!User.Identity!.IsAuthenticated)
+        {
+            <div class="social-media">
+                <a class="btn btn-social" href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a class="btn btn-social" href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a class="btn btn-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a class="btn btn-social" href="#"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        }
+
+        <div class="copyright">
+            <p>&copy; @DateTime.Now.Year Food Zone Pizza. All rights reserved. </p>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,90 @@
+.account-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #28a745;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .account-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .personal-info, .address-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        input, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+
+            button {
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            .cancel-btn {
+                background-color: #28a745;
+                color: white;
+
+                &:hover {
+                    background-color: #c82333;
+                }
+            }
+
+            .save-btn {
+                background-color: #28a745;
+                color: white;
+
+                &:hover {
+                    background-color: #218838;
+                }
+            }
+        }
+    }
+}
