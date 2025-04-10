@@ -80,53 +80,106 @@ $button-hover: darken($button-bg, 10%);
         border-radius: 8px;
         cursor: pointer;
         transition: background 0.3s;
+        width: 100%;
 
         &:hover {
             background: darken(#ff5733, 10%);
         }
     }
 }
-
 .quantity-selector {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 10px 0;
+    gap: 6px;
+    margin: 10px auto;
 
     button {
-        background: #ff5733;
+        background: $button-bg;
         color: white;
         border: none;
-        padding: 5px 10px;
+        width: 32px;
+        height: 32px;
         font-size: 1.2rem;
-        border-radius: 5px;
+        border-radius: 6px;
         cursor: pointer;
-        transition: background 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
-            background: darken(#ff5733, 10%);
+            background: $button-hover;
         }
     }
 
     .quantity-input {
-        width: 40px;
+        width: 48px;
+        height: 32px;
         text-align: center;
         font-size: 1rem;
-        margin: 0 5px;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 6px;
+        padding: 0;
+        margin: 0;
+        min-width: unset !important;
+    }
+
+    .quantity-input::-webkit-outer-spin-button,
+    .quantity-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .quantity-input[type=number] {
+        -moz-appearance: textfield;
     }
 }
 
 
-// Responsive fix for smaller screens
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .menu-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
     }
 
-    img {
-        height: 200px;
+    .menu-item {
+        padding: 15px;
+
+        img {
+            height: 180px;
+        }
+
+        h2 {
+            font-size: 1.5em !important;
+        }
+
+        .price {
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart {
+            font-size: 0.95rem;
+            padding: 8px 14px;
+        }
+
+        .quantity-selector {
+            gap: 6px;
+
+            button {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .quantity-input {
+                width: 40px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+        }
+    }
+    .menu-container h1 {
+        font-size: 2em !important;
     }
 }
-

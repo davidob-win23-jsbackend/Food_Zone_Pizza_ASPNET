@@ -892,45 +892,92 @@ header .container .account-buttons .profile .profile-image form lebel {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
 }
 .menu-item .add-to-cart:hover {
   background: #ff2d00;
 }
 
 .quantity-selector {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0;
+  gap: 6px;
+  margin: 10px auto;
 }
 .quantity-selector button {
   background: #ff5733;
   color: white;
   border: none;
-  padding: 5px 10px;
+  width: 32px;
+  height: 32px;
   font-size: 1.2rem;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .quantity-selector button:hover {
   background: #ff2d00;
 }
 .quantity-selector .quantity-input {
-  width: 40px;
+  width: 48px;
+  height: 32px;
   text-align: center;
   font-size: 1rem;
-  margin: 0 5px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  padding: 0;
+  margin: 0;
+  min-width: unset !important;
+}
+.quantity-selector .quantity-input::-webkit-outer-spin-button,
+.quantity-selector .quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quantity-selector .quantity-input[type=number] {
+  -moz-appearance: textfield;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
   .menu-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
   }
-  img {
-    height: 200px;
+  .menu-item {
+    padding: 15px;
+  }
+  .menu-item img {
+    height: 180px;
+  }
+  .menu-item h2 {
+    font-size: 1.5em !important;
+  }
+  .menu-item .price {
+    font-size: 1.2rem;
+  }
+  .menu-item .add-to-cart {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+  }
+  .menu-item .quantity-selector {
+    gap: 6px;
+  }
+  .menu-item .quantity-selector button {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  .menu-item .quantity-selector .quantity-input {
+    width: 40px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  .menu-container h1 {
+    font-size: 2em !important;
   }
 }
 .signin {
@@ -1229,8 +1276,25 @@ header .container .account-buttons .profile .profile-image form lebel {
   background: #218838;
 }
 
+#payment-method {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+#payment-method p {
+  margin: 0;
+}
 #payment-method .container {
   padding: 20px;
+  width: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+#payment-method .container .payment-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  color: black;
 }
 #payment-method .container .payment-item-object {
   display: flex;
@@ -1249,8 +1313,15 @@ header .container .account-buttons .profile .profile-image form lebel {
   background-color: black;
   color: white;
 }
-#payment-method .container .payment-item-object.active .payment-item-h4 {
+#payment-method .container .payment-item-object.active .payment-item-p {
   color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#payment-method .container .payment-item-object .payment-item-p {
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 #payment-method .container .payment-item-object .payment-image {
   background-color: #EEEEEE;
@@ -1278,27 +1349,11 @@ header .container .account-buttons .profile .profile-image form lebel {
 #payment-method .container .payment-item-object .payment-item-specifications {
   flex: 1;
   margin-left: 20px;
+  font-size: 1em;
 }
-#payment-method .container .payment-item-object input[type=radio]:checked ~ .payment-item-object {
-  background-color: black;
-}
-#payment-method .container .payment-add-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 1px dotted gray;
-  border-radius: 10px;
-  padding: 8px;
-  gap: 14px;
-  margin-bottom: 30px;
-}
-#payment-method .container .payment-add-card .btn-round {
-  background-color: white;
-  color: black;
-  border: 1px solid gray;
-  padding-top: 8px;
-  padding-bottom: 8px;
+#payment-method .container .btn-theme-red-general {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 #payment-method .container .payment-history-object {
   display: flex;
@@ -1340,6 +1395,22 @@ header .container .account-buttons .profile .profile-image form lebel {
   padding-top: 15px;
 }
 
+@media (max-width: 750px) {
+  #payment-method {
+    padding: 1em;
+  }
+  #payment-method .container {
+    width: 95%;
+    padding: 20px;
+  }
+  .payment-title {
+    font-size: 1.3em;
+  }
+  .payment-item-object {
+    display: flex;
+    align-items: center;
+  }
+}
 #payment {
   display: flex;
   justify-content: center;
@@ -1546,4 +1617,68 @@ header .container .account-buttons .profile .profile-image form lebel {
 }
 .account-container .account-section .button-group .save-btn:hover {
   background-color: #218838;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.chat-container .chat-header {
+  background: #28a745;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+}
+.chat-container .chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8f9fa;
+}
+.chat-container .chat-messages .chat-message {
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  word-wrap: break-word;
+  display: flex;
+  justify-content: space-between;
+}
+.chat-container .chat-messages .chat-message .time {
+  font-size: 12px;
+  color: #888;
+  margin-left: 10px;
+}
+.chat-container .chat-input {
+  display: flex;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+.chat-container .chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.chat-container .chat-input button {
+  background: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
 }
