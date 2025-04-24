@@ -1575,15 +1575,46 @@ header .container .account-buttons .profile .profile-image form lebel {
   #payment-method .container {
     width: 95%;
     padding: 20px;
+    border-radius: 12px;
   }
-  .payment-title {
+  #payment-method .container .payment-title {
     font-size: 1.3em;
+    color: black;
   }
-  .payment-item-object {
+  #payment-method .container .payment-item-object {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+  }
+  #payment-method .container .payment-item-object .payment-item-p {
+    color: black;
   }
 }
+html.dark #payment-method .container {
+  border-radius: 10px;
+  border: 1px solid white;
+}
+html.dark #payment-method .container .payment-title {
+  color: white;
+}
+html.dark #payment-method .container .payment-item-object {
+  border-radius: 10px;
+  border: 1px solid white;
+}
+html.dark #payment-method .container .payment-item-object .payment-item-p {
+  color: white !important;
+}
+html.dark #payment-method .container .payment-item-object.active {
+  background-color: white !important;
+  border: 1px solid var(--color-theme) !important;
+  color: black !important;
+}
+html.dark #payment-method .container .payment-item-object.active .payment-item-p {
+  color: black !important;
+}
+
 #payment {
   display: flex;
   justify-content: center;
