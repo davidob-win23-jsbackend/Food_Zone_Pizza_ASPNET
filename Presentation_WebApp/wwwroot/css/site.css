@@ -767,6 +767,39 @@ header .container .account-buttons .profile .profile-image form lebel {
   right: 0;
 }
 
+@media (max-width: 968px) {
+  header .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  header .container nav {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  header .container nav a {
+    font-size: 0.9rem;
+    padding: 5px 0;
+  }
+  header .container nav a i {
+    font-size: 1rem;
+    margin-right: 5px;
+  }
+  header .container nav a span {
+    font-size: 0.85rem;
+  }
+  header .container #btn-switch {
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
 .hero-section {
   position: relative;
   width: 100%;
@@ -1037,6 +1070,48 @@ header .container .account-buttons .profile .profile-image form lebel {
   gap: 20px;
 }
 
+@media (max-width: 750px) {
+  .signin {
+    padding: 1rem;
+    margin-top: 10px;
+    flex-direction: column;
+  }
+  .signin .container {
+    width: 100%;
+  }
+  .signin .container form {
+    width: 100%;
+  }
+  .signin .container form .form-content {
+    grid-template-areas: "email" "password" "remember" "submit" "external";
+    gap: 15px;
+  }
+  .signin .container form .input-group label {
+    font-size: 0.95rem;
+  }
+  .signin .container form .input-group input {
+    font-size: 1rem;
+  }
+  .signin .container form .checkbox-group {
+    font-size: 0.9rem;
+  }
+  .signin .container form .external-providers {
+    margin-top: 15px;
+  }
+  .signin .container form .external-providers h6 {
+    font-size: 1rem;
+  }
+  .signin .container form .external-providers .providers {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .signin .container form button,
+  .signin .container form input[type=submit] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+}
 .signup {
   height: 100%;
   display: flex;
@@ -1083,6 +1158,38 @@ header .container .account-buttons .profile .profile-image form lebel {
   grid-area: submit;
 }
 
+@media (max-width: 750px) {
+  .signup {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .signup .container {
+    width: 100%;
+  }
+  .signup .container form {
+    width: 100%;
+  }
+  .signup .container form .form-content {
+    grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "submit";
+    gap: 15px;
+  }
+  .signup .container form .input-group label {
+    font-size: 0.95rem;
+  }
+  .signup .container form .input-group input {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  .signup .container form .checkbox-group {
+    font-size: 0.9rem;
+  }
+  .signup .container form button,
+  .signup .container form input[type=submit] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
 .cart-container {
   max-width: 800px;
   margin: auto;
@@ -1138,6 +1245,72 @@ header .container .account-buttons .profile .profile-image form lebel {
   margin-left: 200px;
 }
 
+@media (max-width: 750px) {
+  .cart-container {
+    padding: 10px;
+  }
+  .cart-container h1 {
+    margin-left: 80px;
+  }
+  .cart-container .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart-container .cart-item img {
+    width: 95%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .cart-container .cart-item .cart-details {
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+  .cart-container .cart-item .quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .cart-container .cart-item .quantity-controls button {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    min-width: 40px;
+  }
+  .cart-container .cart-item .quantity-controls input[type=number] {
+    flex: 1;
+    min-width: 120px;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  .cart-container .cart-item .remove-item {
+    margin-left: auto;
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+  .cart-container .cart-summary {
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 30px;
+  }
+  .cart-container .checkout-btn {
+    width: 80%;
+    padding: 15px;
+    font-size: 1rem;
+    margin: 20px 30px;
+  }
+  .cart-container .checkout-btn .center {
+    margin-left: 50px;
+  }
+}
 .delivery-options {
   padding-top: 100px;
   display: flex;
@@ -1537,6 +1710,49 @@ header .container .account-buttons .profile .profile-image form lebel {
   margin-top: auto;
 }
 
+@media (max-width: 750px) {
+  .error-404 {
+    padding: 1rem;
+  }
+  .error-404 .container {
+    width: 100%;
+    padding: 0;
+  }
+  .error-404 .container .content h1 {
+    font-size: 2rem;
+  }
+  .error-404 .container .content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  .error-404 .container .content img {
+    width: 80%;
+    max-width: 300px;
+  }
+  .error-404 .container nav {
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  .error-404 .container nav .btn-theme-red {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .error-404 .container nav .btn-theme-red i {
+    font-size: 1rem;
+  }
+}
 #cookie-consent {
   padding: 1.5rem 0 !important;
   border-radius: 0;
@@ -1620,65 +1836,123 @@ header .container .account-buttons .profile .profile-image form lebel {
 }
 
 .chat-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
-  background: #fff;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f8f9fa;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .chat-container .chat-header {
-  background: #28a745;
-  color: white;
-  padding: 15px;
   text-align: center;
-  font-size: 18px;
+  margin-bottom: 1rem;
+}
+.chat-container .chat-header h2 {
+  font-size: 1.8rem;
+  color: #333;
 }
 .chat-container .chat-messages {
-  height: 300px;
+  max-height: 400px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: #f8f9fa;
-}
-.chat-container .chat-messages .chat-message {
-  background: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
-  word-wrap: break-word;
-  display: flex;
-  justify-content: space-between;
-}
-.chat-container .chat-messages .chat-message .time {
-  font-size: 12px;
-  color: #888;
-  margin-left: 10px;
+  gap: 0.5rem;
 }
 .chat-container .chat-input {
   display: flex;
-  padding: 10px;
-  background: #fff;
-  border-top: 1px solid #ddd;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
-.chat-container .chat-input input {
+.chat-container .chat-input input[type=text] {
   flex: 1;
-  padding: 10px;
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  font-size: 1rem;
 }
 .chat-container .chat-input button {
-  background: #28a745;
-  color: white;
-  padding: 10px 15px;
+  padding: 0.7rem 1.2rem;
   border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  margin-left: 10px;
-  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+.chat-container .chat-input button:hover {
+  background-color: #0056b3;
+}
+
+.chat-message {
+  display: flex;
+}
+.chat-message.chat-left {
+  justify-content: flex-start;
+}
+.chat-message.chat-left .chat-bubble {
+  background-color: #e4e6eb;
+  color: #333;
+  align-self: flex-start;
+}
+.chat-message.chat-right {
+  justify-content: flex-end;
+}
+.chat-message.chat-right .chat-bubble {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+}
+.chat-message .chat-bubble {
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  position: relative;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+.chat-message .chat-bubble strong {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+.chat-message .chat-bubble .chat-time {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-left: 0.5rem;
+  float: right;
+}
+
+@media (max-width: 750px) {
+  .chat-container {
+    height: 90vh;
+    margin: 1rem;
+  }
+  .chat-header {
+    font-size: 1.2rem;
+  }
+  .chat-message {
+    flex-direction: column;
+  }
+  .chat-message.chat-right {
+    align-items: flex-end;
+  }
+  .chat-message .chat-bubble {
+    max-width: 80%;
+    font-size: 0.95rem;
+  }
+  .chat-message .chat-time {
+    font-size: 0.7rem;
+  }
+  .chat-input {
+    flex-direction: column;
+  }
+  .chat-input input#messageInput,
+  .chat-input button#sendButton {
+    width: 100%;
+    font-size: 1rem;
+  }
 }

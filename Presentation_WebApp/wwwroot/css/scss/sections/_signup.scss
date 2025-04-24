@@ -61,3 +61,49 @@
         }
     }
 }
+
+
+
+@media (max-width: 750px) {
+    .signup {
+        padding: 1rem;
+        flex-direction: column;
+
+        .container {
+            width: 100%;
+
+            form {
+                width: 100%;
+
+                .form-content {
+                    grid-template-areas:
+                        "firstname" "lastname" "email" "password" "confirm" "terms" "submit";
+                    gap: 15px;
+                }
+
+                .input-group {
+                    label {
+                        font-size: 0.95rem;
+                    }
+
+                    input {
+                        font-size: 1rem;
+                        padding: 0.8rem;
+                    }
+                }
+
+                .checkbox-group {
+                    font-size: 0.9rem;
+                }
+
+                button,
+                input[type="submit"] {
+                    width: 100%;
+                    font-size: 1rem;
+                    padding: 0.8rem;
+                }
+            }
+        }
+    }
+}
+

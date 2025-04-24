@@ -31,3 +31,58 @@
         }
     }
 }
+
+
+@media (max-width: 750px) {
+    .error-404 {
+        padding: 1rem;
+
+        .container {
+            width: 100%;
+            padding: 0;
+
+            .content {
+                h1 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1rem;
+                    padding: 0 1rem;
+                }
+
+                img {
+                    width: 80%;
+                    max-width: 300px;
+                }
+            }
+
+            nav {
+                width: 100%;
+                padding: 0 1rem;
+                display: flex;
+                justify-content: center;
+
+                .btn-theme-red {
+                    width: 100%;
+                    max-width: 320px;
+                    text-align: center;
+                    font-size: 1rem;
+                    padding: 1rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    i {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+

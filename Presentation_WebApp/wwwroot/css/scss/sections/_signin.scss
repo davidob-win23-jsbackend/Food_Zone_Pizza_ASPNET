@@ -73,3 +73,60 @@
         }
     }
 }
+
+
+@media (max-width: 750px) {
+    .signin {
+        padding: 1rem;
+        margin-top: 10px;
+        flex-direction: column;
+
+        .container {
+            width: 100%;
+
+            form {
+                width: 100%;
+
+                .form-content {
+                    grid-template-areas:
+                        "email" "password" "remember" "submit" "external";
+                    gap: 15px;
+                }
+
+                .input-group {
+                    label {
+                        font-size: 0.95rem;
+                    }
+
+                    input {
+                        font-size: 1rem;
+                    }
+                }
+
+                .checkbox-group {
+                    font-size: 0.9rem;
+                }
+
+                .external-providers {
+                    margin-top: 15px;
+
+                    h6 {
+                        font-size: 1rem;
+                    }
+
+                    .providers {
+                        flex-wrap: wrap;
+                        gap: 10px;
+                    }
+                }
+
+                button,
+                input[type="submit"] {
+                    width: 100%;
+                    font-size: 1rem;
+                    padding: 0.8rem 1rem;
+                }
+            }
+        }
+    }
+}
